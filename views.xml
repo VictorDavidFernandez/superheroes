@@ -1,0 +1,167 @@
+<odoo>
+
+    <record model="ir.actions.act_window" id="superheroe_list_action">
+        <field name="name">superheroe</field>
+        <field name="res_model">superheroes.superheroe</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="supervillain_list_action">
+        <field name="name">supervillain</field>
+        <field name="res_model">superheroes.supervillain</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="event_list_action">
+        <field name="name">event</field>
+        <field name="res_model">superheroes.event</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Superheroes and Supervillains" id="superheroes_menu_root"/>
+
+    <menuitem name="Superheroes" id="superheroes_menu_superheroes" parent="superheroes_menu_root"/>
+
+    <menuitem name="Superheroes list" id="superheroes_list_superheroes" parent="superheroes_menu_superheroes"
+              action="superheroe_list_action"/>
+
+    <record model="ir.ui.view" id="superheroe_form_view">
+        <field name="name">superheroe.form</field>
+        <field name="model">superheroes.superheroe</field>
+        <field name="arch" type="xml">
+            <form string="Formulario">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="realName"/>
+                        <field name="firstAppearance"/>
+                        <field name="supervillain_id"/>
+                        <field name="events_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="superheroe_tree_view">
+        <field name="name">superheroe.tree</field>
+        <field name="model">superheroes.superheroe</field>
+        <field name="arch" type="xml">
+            <tree string="Listado">
+                <field name="name"/>
+                <field name="realName"/>
+                <field name="firstAppearance"/>
+                <field name="supervillain_id"/>
+                <field name="events_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="superheroe_search_view">
+        <field name="name">superheroe.search</field>
+        <field name="model">superheroes.superheroe</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="realName"/>
+            </search>
+        </field>
+    </record>
+
+    <menuitem name="Supervillains" id="superheroes_menu_supervillains" parent="superheroes_menu_root"/>
+
+    <menuitem name="Supervillains list" id="superheroes_list_supervillains" parent="superheroes_menu_supervillains"
+              action="supervillain_list_action"/>
+
+    <record model="ir.ui.view" id="supervillain_form_view">
+        <field name="name">supervillain.form</field>
+        <field name="model">superheroes.supervillain</field>
+        <field name="arch" type="xml">
+            <form string="Formulario">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="realName"/>
+                        <field name="firstAppearance"/>
+                        <field name="superheroe_id"/>
+                        <field name="events_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="supervillain_tree_view">
+        <field name="name">supervillain.tree</field>
+        <field name="model">superheroes.supervillain</field>
+        <field name="arch" type="xml">
+            <tree string="Listado">
+                <field name="name"/>
+                <field name="realName"/>
+                <field name="firstAppearance"/>
+                <field name="superheroe_id"/>
+                <field name="events_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="supervillain_search_view">
+        <field name="name">supervillain.search</field>
+        <field name="model">superheroes.supervillain</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="realName"/>
+            </search>
+        </field>
+    </record>
+
+    <menuitem name="Events" id="superheroes_menu_events" parent="superheroes_menu_root"/>
+
+    <menuitem name="Events" id="superheroes_list_events" parent="superheroes_menu_events"
+              action="event_list_action"/>
+
+    <record model="ir.ui.view" id="event_form_view">
+        <field name="name">event.form</field>
+        <field name="model">superheroes.event</field>
+        <field name="arch" type="xml">
+            <form string="Formulario">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="startDate"/>
+                        <field name="endDate"/>
+                        <field name="duration"/>
+                        <field name="superheroes_ids"/>
+                        <field name="supervillains_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="event_tree_view">
+        <field name="name">event.tree</field>
+        <field name="model">superheroes.event</field>
+        <field name="arch" type="xml">
+            <tree string="Listado">
+                <field name="name"/>
+                <field name="startDate"/>
+                <field name="endDate"/>
+                <field name="duration"/>
+                <field name="superheroes_ids"/>
+                <field name="supervillains_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="event_search_view">
+        <field name="name">event.search</field>
+        <field name="model">superheroes.event</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+</odoo>
