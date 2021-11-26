@@ -1,20 +1,38 @@
 <odoo>
 
     <record model="ir.actions.act_window" id="superheroe_list_action">
-        <field name="name">superheroe</field>
+        <field name="name">Superheros</field>
         <field name="res_model">superheroes.superheroe</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <record model="ir.actions.act_window" id="supervillain_list_action">
-        <field name="name">supervillain</field>
+        <field name="name">Supervillains</field>
         <field name="res_model">superheroes.supervillain</field>
         <field name="view_mode">tree,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="sidekick_list_action">
+        <field name="name">Sidekicks</field>
+        <field name="res_model">superheroes.sidekick</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
     <record model="ir.actions.act_window" id="event_list_action">
-        <field name="name">event</field>
+        <field name="name">Events</field>
         <field name="res_model">superheroes.event</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="organization_list_action">
+        <field name="name">Organizations</field>
+        <field name="res_model">superheroes.organization</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="teams_list_action">
+        <field name="name">Teams</field>
+        <field name="res_model">superheroes.organization</field>
         <field name="view_mode">tree,form</field>
     </record>
 
@@ -22,7 +40,7 @@
 
     <menuitem name="Superheroes" id="superheroes_menu_superheroes" parent="superheroes_menu_root"/>
 
-    <menuitem name="Superheroes list" id="superheroes_list_superheroes" parent="superheroes_menu_superheroes"
+    <menuitem name="Superheros list" id="superheroes_list_superheroes" parent="superheroes_menu_superheroes"
               action="superheroe_list_action"/>
 
     <record model="ir.ui.view" id="superheroe_form_view">
@@ -36,7 +54,9 @@
                         <field name="realName"/>
                         <field name="firstAppearance"/>
                         <field name="supervillain_id"/>
+                        <field name="sidekick_id"/>
                         <field name="events_ids"/>
+                        <field name="teams_id"/>
                     </group>
                 </sheet>
             </form>
@@ -162,6 +182,96 @@
             <search>
                 <field name="name"/>
             </search>
+        </field>
+    </record>
+
+    <menuitem name="Sidekicks" id="superheroes_menu_sidekicks" parent="superheroes_menu_root"/>
+
+    <menuitem name="Sidekicks list" id="superheroes_list_sidekicks" parent="superheroes_menu_sidekicks"
+              action="sidekick_list_action"/>
+
+    <record model="ir.ui.view" id="sidekicks_form_view">
+        <field name="name">sidekick.form</field>
+        <field name="model">superheroes.sidekick</field>
+        <field name="arch" type="xml">
+            <form string="Formulario">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="realName"/>
+                        <field name="firstAppearance"/>
+                        <field name="instructor"/>
+                        <field name="events_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="sidekick_tree_view">
+        <field name="name">sidekick.tree</field>
+        <field name="model">superheroes.sidekick</field>
+        <field name="arch" type="xml">
+            <tree string="Listado">
+                <field name="name"/>
+                <field name="realName"/>
+                <field name="firstAppearance"/>
+                <field name="events_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem name="Organizations" id="superheroes_menu_organizations" parent="superheroes_menu_root"
+              action="organization_list_action"/>
+
+    <record model="ir.ui.view" id="organization_form_view">
+        <field name="name">organization.form</field>
+        <field name="model">superheroes.organization</field>
+        <field name="arch" type="xml">
+            <form string="Formulario">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="firstAppearance"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="organization_tree_view">
+        <field name="name">organization.tree</field>
+        <field name="model">superheroes.organization</field>
+        <field name="arch" type="xml">
+            <tree string="Listado">
+                <field name="name"/>
+                <field name="firstAppearance"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem name="Teams" id="superheroes_menu_teams" parent="superheroes_menu_root"
+              action="teams_list_action"/>
+
+    <record model="ir.ui.view" id="teams_form_view">
+        <field name="name">teams.form</field>
+        <field name="model">superheroes.organization</field>
+        <field name="inherit_id" ref="superheroes.organization_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='firstAppearance']" position="after">
+                <field name="members" string="Members"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="teams_tree_view">
+        <field name="name">teams.tree</field>
+        <field name="model">superheroes.organization</field>
+        <field name="inherit_id" ref="superheroes.organization_tree_view"/>
+        <field name="arch" type="xml">
+            <tree string="Listado">
+                <field name="members" string="Members"/>
+            </tree>
         </field>
     </record>
 </odoo>

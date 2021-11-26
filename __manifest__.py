@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "superheroes",
+    'name': "Superheros",
 
     'summary': """About Superheroes and Supervillains""",
 
