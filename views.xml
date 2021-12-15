@@ -55,9 +55,22 @@
                         <field name="firstAppearance"/>
                         <field name="supervillain_id"/>
                         <field name="sidekick_id"/>
-                        <field name="events_ids"/>
-                        <field name="teams_id"/>
+
                     </group>
+                        <notebook>
+                            <page string="Power grid">
+                                <group>
+                                    <field name="intelligence"/>
+                                    <field name="strength"/>
+                                    <field name="speed"/>
+                                    <field name="durability"/>
+                                    <field name="energyProjection"/>
+                                    <field name="fightingSkills"/>
+                                    <field name="average"/>
+                                </group>
+                            </page>
+                        </notebook>
+
                 </sheet>
             </form>
         </field>
@@ -72,7 +85,7 @@
                 <field name="realName"/>
                 <field name="firstAppearance"/>
                 <field name="supervillain_id"/>
-                <field name="events_ids"/>
+
             </tree>
         </field>
     </record>
@@ -201,7 +214,6 @@
                         <field name="realName"/>
                         <field name="firstAppearance"/>
                         <field name="instructor"/>
-                        <field name="events_ids"/>
                     </group>
                 </sheet>
             </form>
@@ -216,7 +228,7 @@
                 <field name="name"/>
                 <field name="realName"/>
                 <field name="firstAppearance"/>
-                <field name="events_ids"/>
+                <field name="instructor"/>
             </tree>
         </field>
     </record>
